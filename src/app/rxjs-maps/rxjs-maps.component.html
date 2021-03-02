@@ -1,0 +1,50 @@
+<div class="full-border">
+  mergeMap
+<form [formGroup]="form">
+  <label>
+    SearchField1 <input formControlName="searchField1">
+  </label> <br>
+  <label>
+    SearchField2 <input formControlName="searchField2">
+  </label>
+</form>
+<div>
+  output: {{mergeMap$ | async}}
+</div>
+</div>
+
+<div class="full-border">
+  concatMap
+  <form>
+    <label>
+      delaytime (ms) <input #delayInput>
+    </label><br>
+    <button type="submit" (click)="submittedDelayTime(+delayInput.value); delayInput.value = ''">submit</button>
+  </form>
+  <button (click)="startConcatMap()">Start!</button>
+  <br>queue
+  <ul>
+    <li *ngFor="let x of queuedConcatObservables">
+      {{x}}
+    </li>
+  </ul>
+  <br>output
+  <ul>
+    <li *ngFor="let x of concatMapOutput">
+      {{x}}
+    </li>
+  </ul>
+</div>
+
+<div class="full-border">
+  switchMap<br>
+  <button #switchMapBtn>Click me!</button>
+  <p *ngIf="switchmap$">{{switchmap$ | async}}</p>
+  <button (click)="stopSwitchMap()">Stop</button>
+</div>
+
+<div class="full-border">
+  exaustMap<br>
+  <button #exaustMapBtn>Click me!</button>
+  <p *ngIf="exaustMap$">{{exaustMap$ | async}}</p>
+</div>
